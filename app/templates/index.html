@@ -1,4 +1,20 @@
-{% extends "base.html" %}
-{% block content %}
-<h1>Bienvenida al sistema de gestión de restaurantes</h1>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <h1>Welcome to the Index Page</h1>
+    {% if users %}
+        <ul>
+            {% for user in users %}
+                <li>{{ user.username }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No users found.</p>
+    {% endif %}
+</body>
+</html>
