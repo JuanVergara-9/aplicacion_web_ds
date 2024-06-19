@@ -64,3 +64,12 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('main_bp.login'))
     return render_template('register.html', title='Register', form=form)
+
+@main_bp.route('/test_db')
+def test_db():
+    try:
+        # Intentar una consulta simple
+        users = User.query.all()
+        return f'There are {len(users)} users in the database.'
+    except Exception as e:
+        return str(e)
