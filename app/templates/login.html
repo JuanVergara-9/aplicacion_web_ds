@@ -1,26 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} </title>
+    <title>Ingreso Cliente</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <form method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
-        </p>
-        <p>
-            {{ form.remember_me }} {{ form.remember_me.label }}
-        </p>
-        <p>{{ form.submit() }}</p>
+    <h1>Bienvenido</h1>
+    <form method="post" action="{{ url_for('main_bp.login') }}">
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" id="name" required>
+        <br>
+        <label for="table_number">Número de Mesa:</label>
+        <input type="number" name="table_number" id="table_number" required>
+        <br>
+        <input type="submit" value="Ingresar">
     </form>
 </body>
 </html>
