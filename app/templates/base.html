@@ -1,46 +1,46 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ title }} - Restaurant Management</title>
+    <title>{{ title }} - BAR2.0</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  </head>
-  <body>
+</head>
+<body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="{{ url_for('index') }}">Restaurant Management</a>
-      <div class="collapse navbar-collapse">
+        <a class="navbar-brand" href="{{ url_for('main_bp.index') }}">BAR2.0</a>
         <div class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('index') }}">Home</a>
-            </li>{% if current_user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-            </li>{% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('register') }}">Register</a>
-            </li>{% endif %}
-          </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main_bp.index') }}">Home</a>
+                </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main_bp.logout') }}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main_bp.login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main_bp.register') }}">Register</a>
+                </li>
+                {% endif %}
+            </ul>
         </div>
-        
-      
     </nav>
     <div class="container">
-      {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages() %}
         {% if messages %}
-          <div class="alert alert-warning" role="alert">
+        <div class="alert alert-warning" role="alert">
             {% for message in messages %}
-              {{ message }}
+            {{ message }}
             {% endfor %}
-          </div>
+        </div>
         {% endif %}
-      {% endwith %}
-      {% block content %}{% endblock %}
+        {% endwith %}
+        {% block content %}{% endblock %}
     </div>
-  </body>
+</body>
 </html>

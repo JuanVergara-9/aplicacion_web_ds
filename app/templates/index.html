@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-</head>
-<body>
-    <h1>Welcome to the Index Page</h1>
-    {% if users %}
-        <ul>
-            {% for user in users %}
-                <li>{{ user.username }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No users found.</p>
-    {% endif %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Bienvenido, {{ name }}!</h1>
+    <p>Número de mesa: {{ table_number }}</p>
+    <ul>
+        <li><a href="{{ url_for('main_bp.menu') }}">Ver Menú</a></li>
+        <li><a href="{{ url_for('main_bp.ver_pedido') }}">Ver Pedido</a></li>
+        <li><a href="{{ url_for('main_bp.llamar_mozo') }}">Llamar Mozo</a></li>
+    </ul>
+</div>
+{% endblock %}
