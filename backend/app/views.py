@@ -8,9 +8,9 @@ main_bp = Blueprint('main_bp', __name__)
 valid_table_numbers = {1, 2, 3, 4, 5}
 
 class User(UserMixin):
-    def __init__(self, id, name, table_number):
+    def __init__(self, id, username, table_number):
         self.id = id
-        self.name = name
+        self.username = username
         self.table_number = table_number
 
     @staticmethod
@@ -22,7 +22,7 @@ class User(UserMixin):
 @main_bp.route('/index')
 @login_required
 def index():
-    return render_template('index.html', title='Home', name=current_user.name, table_number=current_user.table_number)
+    return render_template('index.html', title='Home', name=current_user.username, table_number1=current_user.table_number)
 
 @main_bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -30,9 +30,9 @@ def login():
         return redirect(url_for('main_bp.index'))
     if request.method == 'POST':
         name = request.form['name']
-        table_number = int(request.form['table_number'])
-        if table_number in valid_table_numbers:
-            user = User(table_number, name, table_number)
+        table_number1 = int(request.form['table_number1'])
+        if table_number1 in valid_table_numbers:
+            user = User(table_number1, name, table_number1)
             login_user(user)
             next_page = request.args.get('next')
             if not next_page or urlsplit(next_page).netloc != '': 
