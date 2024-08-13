@@ -1,9 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from config import Config, TestingConfig
 from app.views import main_bp  # Importa el Blueprint principal
+
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -11,8 +12,11 @@ login_manager = LoginManager()
 
 def create_app(config_name='default'):
     # Crea la aplicación Flask, especificando carpetas personalizadas para plantillas y estáticos
-    app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/static')
-
+    app = Flask(
+        __name__,
+        template_folder='C:/Users/juanv/OneDrive/Documentos/BAR2.0/frontend/templates',
+        static_folder='C:/Users/juanv/OneDrive/Documentos/BAR2.0/frontend/static'
+    )
 
     # Configura la aplicación según el entorno especificado
     if config_name == 'testing':
@@ -35,5 +39,12 @@ def create_app(config_name='default'):
     def load_user(user_id):
         from .models import User
         return User.query.get(int(user_id))
+    
+    @app.route('/test_template')
+    def test_template():
+        return render_template('login.html')
+
+    if __name__ == '__main__':
+        app.run(debug=True)
 
     return app
