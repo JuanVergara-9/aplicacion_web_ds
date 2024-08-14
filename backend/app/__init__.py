@@ -1,12 +1,13 @@
 from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+from .extension import db
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from .models import User
 from config import Config, TestingConfig
-from app.views import main_bp  # Importa el Blueprint principal
 
 
-db = SQLAlchemy()
+
+
 migrate = Migrate()
 login_manager = LoginManager()
 
@@ -32,14 +33,21 @@ def create_app(config_name='default'):
     # Configura la vista de login predeterminada para Flask-Login
     login_manager.login_view = 'main_bp.login'
 
+    @login_manager.user_loader
+    def load_user(user_id):
+        if user_id is not None:
+            try:
+                return User.query.get(int(user_id))
+            except ValueError:
+                return None
+        return None
+
+    # Mover la importación del Blueprint aquí, después de inicializar las extensiones
+    from app.views import main_bp  # Importa el Blueprint principal
+
     # Registra el Blueprint principal
     app.register_blueprint(main_bp)
 
-    @login_manager.user_loader
-    def load_user(user_id):
-        from .models import User
-        return User.query.get(int(user_id))
-    
     @app.route('/test_template')
     def test_template():
         return render_template('login.html')
