@@ -16,6 +16,7 @@ def create_app(config_name='default'):
         template_folder='C:/Users/juanv/OneDrive/Documentos/BAR2.0/frontend/templates',
         static_folder='C:/Users/juanv/OneDrive/Documentos/BAR2.0/frontend/static'
     )
+    
 
     # Configura la aplicación según el entorno especificado
     if config_name == 'testing':
