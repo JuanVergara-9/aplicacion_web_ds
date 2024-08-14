@@ -7,12 +7,12 @@ from datetime import datetime, timezone
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     codigo_mesa = db.Column(db.Integer, nullable=False)
-    username = db.Column(db.String(64), nullable=False)
+    username = db.Column(db.String(64), unique=True, nullable=False)
 
     def init(self, codigo_mesa, username):
         self.codigo_mes = codigo_mesa
         self.username = username
-
+        
 
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)

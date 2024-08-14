@@ -6,8 +6,6 @@ from .models import User
 from config import Config, TestingConfig
 
 
-
-
 migrate = Migrate()
 login_manager = LoginManager()
 
