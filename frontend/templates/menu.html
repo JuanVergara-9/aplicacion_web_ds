@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+    <h1>Bienvenido al Bar</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#call-waiter">Llamar al Mozo</a></li>
+        <li><a href="#order">Hacer Pedido</a></li>
+    </ul>
+</nav>
+
+<section class="menu-section">
+    <div class="menu-category">
+        <h2 class="category-title">Bebidas</h2>
+        <ul class="category-items">
+            <li class="menu-item">
+                Cerveza $100 <button class="add-button">+</button>
+            </li>
+            <li class="menu-item">
+                Vino tinto $200 <button class="add-button">+</button>
+            </li>
+            <li class="menu-item">
+                Vodka $220 <button class="add-button">+</button>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="menu-category">
+        <h2 class="category-title">Comida</h2>
+        <ul class="category-items">
+            <li class="menu-item">
+                Papas fritas $200 <button class="add-button">+</button>
+            </li>
+            <li class="menu-item">
+                Lomo simple $800 <button class="add-button">+</button>
+            </li>
+            <li class="menu-item">
+                Hamburguesa $700 <button class="add-button">+</button>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section id="fixed-buttons">
+    <button id="callWaiterButton">Llamar Mozo</button>
+    <button id="orderButton">Realizar Pedido</button>
+</section>
+
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+{% endblock %}

@@ -1,15 +1,12 @@
 from flask import render_template, flash, redirect, request, url_for
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
-from urllib.parse import urlsplit
 from flask import Blueprint
 from .extension import db
 
 main_bp = Blueprint('main_bp', __name__)
 
-# Supongamos que los números de mesa válidos son enteros
-valid_table_numbers = {1, 2, 3, 4, 5}
-
+# Rutas para la página de inicio y login
 @main_bp.route('/')
 @main_bp.route('/index')
 @login_required
@@ -34,13 +31,11 @@ def login():
             flash(f'Usuario {username} registrado y logueado exitosamente')
             return redirect(url_for('main_bp.index'))
 
-
         # Si el usuario ya existe, simplemente loguearlo
         if user.codigo_mesa == codigo_mesa:
             login_user(user)
             flash(f'Bienvenido de nuevo, {username}!')
             return redirect(url_for('main_bp.index'))
-
         else:
             flash('Código de mesa incorrecto.')
 
@@ -49,4 +44,10 @@ def login():
 @main_bp.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main_bp.index'))
+
+# Nueva ruta para el menú
+@main_bp.route('/menu')
+@login_required
+def menu():
+    return render_template('menu.html', title='Menú')

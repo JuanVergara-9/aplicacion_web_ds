@@ -5,9 +5,10 @@
     <h1>Bienvenido, {{ name }}!</h1>
     <p>Número de mesa: {{ table_number }}</p>
     <ul>
-        <li><a href="{{ url_for('main_bp.index') }}">Ver Menú</a></li>
-        <li><a href="{{ url_for('main_bp.index') }}">Ver Pedido</a></li>
-        <li><a href="{{ url_for('main_bp.index') }}">Llamar Mozo</a></li>
+        <li><a href="{{ url_for('main_bp.menu') }}">Ver Menú</a></li>
+        <li><a href="#order">Ver Pedido</a></li>
+        <li><a href="#call-waiter">Llamar Mozo</a></li>
+        
     </ul>
 </div>
 {% endblock %}

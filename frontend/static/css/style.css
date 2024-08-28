@@ -1,49 +1,96 @@
-/* style.css */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-.login-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav {
+    background-color: #444;
+    padding: 10px 0;
     text-align: center;
 }
 
-h2 {
-    margin-bottom: 20px;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
+nav ul li {
+    display: inline;
+    margin: 0 10px;
 }
 
-input[type="text"],
-input[type="number"] {
-    width: 100%;
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-section {
+    width: 65%;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-category {
+    margin: 20px 0;
+}
+
+.category-title {
+    background-color: #ccc;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    margin: 0;
+    cursor: pointer;
+    font-size: 24px;
 }
 
-button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 15px;
+.category-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+.menu-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-button {
+    background-color: #333;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    padding: 5px 10px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #218838;
+#fixed-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#fixed-buttons button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#fixed-buttons button:hover {
+    background-color: #0056b3;
 }

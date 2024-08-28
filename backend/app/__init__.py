@@ -5,7 +5,6 @@ from flask_login import LoginManager
 from .models import User
 from config import Config, TestingConfig
 
-
 migrate = Migrate()
 login_manager = LoginManager()
 
@@ -17,7 +16,6 @@ def create_app(config_name='default'):
         static_folder='C:/Users/juanv/OneDrive/Documentos/BAR2.0/frontend/static'
     )
     
-
     # Configura la aplicación según el entorno especificado
     if config_name == 'testing':
         app.config.from_object(TestingConfig)
@@ -41,10 +39,8 @@ def create_app(config_name='default'):
                 return None
         return None
 
-    # Mover la importación del Blueprint aquí, después de inicializar las extensiones
+    # Importa y registra el Blueprint principal
     from app.views import main_bp  # Importa el Blueprint principal
-
-    # Registra el Blueprint principal
     app.register_blueprint(main_bp)
 
     @app.route('/test_template')
